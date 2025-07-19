@@ -1,16 +1,15 @@
 <?php
-
+require_once "titular.php";
 class Conta
 {
-    private string $cpfTitular;
-    private string $nomeTitular;
+    private Titular $cliente;
     private float $saldo;
     private static $quantidadeDeContas = 0;
 
     public function __construct(string $cpfTitular, string $nomeTitular)
     {
-        $this->cpfTitular = $cpfTitular;
-        $this->nomeTitular = $nomeTitular;
+
+        $this->cliente = new Titular($cpfTitular, $nomeTitular);
         $this->saldo = 0;
         // Conta::$quantidadeDeContas++;
         self::$quantidadeDeContas++;
@@ -51,12 +50,12 @@ class Conta
 
     public function recuperaCpf()
     {
-        return $this->cpfTitular;
+        return $this->cliente->recuperaCpf();
     }
 
     public function recuperaNome()
     {
-        return $this->nomeTitular;
+        return $this->cliente->recuperaNome();
     }
 
     public function recuperaSaldo()
