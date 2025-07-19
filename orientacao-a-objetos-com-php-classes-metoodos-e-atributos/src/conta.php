@@ -2,9 +2,19 @@
 
 class Conta
 {
-    public string $cpfTitular;
-    public string $nomeTitular;
-    public float $saldo = 0;
+    private string $cpfTitular;
+    private string $nomeTitular;
+    private float $saldo;
+    private static $quantidadeDeContas = 0;
+
+    public function __construct(string $cpfTitular, string $nomeTitular)
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+        // Conta::$quantidadeDeContas++;
+        self::$quantidadeDeContas++;
+    }
 
     public function sacar($valor)
     {
@@ -33,13 +43,38 @@ class Conta
         $this->sacar($valor);
         $contaDestino->depositar($valor);
     }
+
+    public function defineSaldo($valor)
+    {
+        $this->saldo = $valor;
+    }
+
+    public function recuperaCpf()
+    {
+        return $this->cpfTitular;
+    }
+
+    public function recuperaNome()
+    {
+        return $this->nomeTitular;
+    }
+
+    public function recuperaSaldo()
+    {
+        return $this->saldo;
+    }
+
+    public function __destruct()
+    {
+        self::$quantidadeDeContas--;
+    }
 }
 
-$conta = new Conta();
+$conta = new Conta("123.456.789.10", "Clebinho Furacao");
 
-$conta->cpfTitular = '123.456.789-10';
-$conta->nomeTitular = "Clebinho Furacao";
-$conta->saldo = 0;
+// $conta->cpfTitular = '123.456.789-10';
+// $conta->nomeTitular = "Clebinho Furacao";
+// $conta->saldo = 0;
 
 // $conta->sacar(200);
 
@@ -51,7 +86,7 @@ $conta->sacar(50);
 
 var_dump($conta);
 
-$conta2 = new Conta();
+$conta2 = new Conta("147.258.369-10", "Rogéria Ventanias");
 
 var_dump($conta2);
 
