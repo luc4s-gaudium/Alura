@@ -1,6 +1,7 @@
 <?php
-include './admin/Artigo.php';
-$artigo = new Artigo();
+include "./config.php";
+include './src/Artigo.php';
+$artigo = new Artigo($mysql);
 $artigos = $artigo->pegaArtigos();
 ?>
 
@@ -19,7 +20,7 @@ $artigos = $artigo->pegaArtigos();
         <?php foreach ($artigos as $artigo): ?>
             <div>
                 <h2>
-                    <a href="<?php echo $artigo['link']; ?>">
+                    <a href="artigo.php?id=<?php echo $artigo['id']; ?>">
                         <?php echo $artigo['titulo']; ?>
                     </a>
                 </h2>
