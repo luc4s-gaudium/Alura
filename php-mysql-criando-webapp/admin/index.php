@@ -29,7 +29,7 @@ $artigos = $obj_artigo->pegaArtigos();
                 </div>
             <?php endforeach; ?>
         </div>
-        <a class="botao botao-block" href="adicionar-artigo.php">Adicionar Artigo A</a>
+        <a class="botao botao-block" href="adicionar-artigo.php">Adicionar Artigo</a>
     </div>
 </body>
 

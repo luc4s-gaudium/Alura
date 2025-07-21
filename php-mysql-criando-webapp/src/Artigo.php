@@ -38,4 +38,11 @@ class Artigo
         $deletar->bind_param('s', $id);
         $deletar->execute();
     }
+
+    public function  editaArtigo(string $id, string $titulo, string $conteudo)
+    {
+        $editar = $this->mysql->prepare("UPDATE artigos SET titulo = ?, conteudo = ? WHERE id = ?");
+        $editar->bind_param('sss', $titulo, $conteudo, $id);
+        $editar->execute();
+    }
 }

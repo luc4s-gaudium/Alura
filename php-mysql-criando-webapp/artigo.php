@@ -18,11 +18,11 @@ $artigo = $obj_artigo->pegaArtigoPorId($_GET['id']);
 <body>
     <div id="container">
         <h1>
-            <?php echo $artigo['titulo'];?>
-            <?php echo $_GET['id'];?>
+            <?php echo $artigo['titulo']; ?>
+            <?php echo $_GET['id']; ?>
         </h1>
         <p>
-            <?php echo $artigo['conteudo'];?>
+            <?php echo nl2br($artigo['conteudo']); ?>
         </p>
         <div>
             <a class="botao botao-block" href="index.php">Voltar</a>
