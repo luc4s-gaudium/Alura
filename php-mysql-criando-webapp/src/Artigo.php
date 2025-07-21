@@ -31,4 +31,11 @@ class Artigo
         $insereArtigo->bind_param('ss', $titulo, $conteudo);
         $insereArtigo->execute();
     }
+
+    public function deletaArtigo(string $id)
+    {
+        $deletar = $this->mysql->prepare("DELETE FROM artigos WHERE id = ?");
+        $deletar->bind_param('s', $id);
+        $deletar->execute();
+    }
 }

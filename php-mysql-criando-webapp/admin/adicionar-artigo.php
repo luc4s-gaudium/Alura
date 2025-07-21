@@ -1,18 +1,18 @@
 <?php
 require "../src/Artigo.php";
 require "../config.php";
+require "../src/Redireciona.php";
 
-$_POST['titulo']; // titulo = atributo name, não id
-$_POST['conteudo']; // conteudo = atributo name, não id
+// $_POST['titulo']; // titulo = atributo name, não id
+// $_POST['conteudo']; // conteudo = atributo name, não id
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $artigo = new Artigo($mysql);
     $artigo->adicionaArtigo($_POST['titulo'], $_POST['conteudo']);
+    redireciona();
 }
 
-header('location: adicionar-artigo.php');
-die();
 ?>
 
 <!DOCTYPE html>
